@@ -1,23 +1,19 @@
 
+
 function ListGroup() {
     let items = ['New York', "San Francisco", "Tokyo", "London", "Paris"];
-    //items = [];
 
-
-    const getMessage = () => {
-        return items.length === 0 ?
-            <p>No item found</p>
-            :
-            <ul className="list-group">
-                {items.map(item => <li key={item}>{item}</li>)}
-            </ul>
-    }
+    // Event handler
+    const handleClick = (event: React.MouseEvent) => console.log(event)
 
     return (
         <>
             <h1>List</h1>
-            {getMessage()}
-
+            {items.length === 0 && <p> "No item found."</p>}
+            <ul className="list-group"></ul>
+            {items.map((item, index) => (
+                <li className="list-group-item" key={item} onClick={handleClick}>{item} {index}</li>
+            ))}
         </>
     );
 }
